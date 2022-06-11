@@ -26,7 +26,7 @@ Manager = {
                 OnNewCharacter(v)
             end
 
-            table.insert(Connections, Players.PlayerAdded(OnNewCharacter))
+            table.insert(Connections, Players.PlayerAdded:Connect(OnNewCharacter))
 
             return Connections
         end
