@@ -71,7 +71,7 @@ function Manager:vtoggle(Type, Name, State, ObjectData)
         if self.Objects[ObjectData] then
             self.Objects[ObjectData](function(...)
                 self.CreateVisuals[Name](...)
-            end)
+            end, Type, Name)
         end
     else
         for i,v in pairs(self.Visuals[Type][Name]) do
