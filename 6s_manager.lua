@@ -11,6 +11,7 @@ Manager = {
     Objects = {
         ["Players"] = function(Callback, Type, Visual)
             local Connections = {}
+            print(Type,Visual)
 
             local function OnNewCharacter(Player)
                 table.insert(Connections, Player.CharacterAdded:Connect(function(Character)
