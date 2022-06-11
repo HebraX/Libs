@@ -9,17 +9,16 @@ Manager = {
 
     Visuals = {},
     Objects = {
-        ["Players"] = function(Callback, Type, Visual)
+        ["Players"] = function(Callback, Type, Visual, Visuals)
             local Connections = {}
-            print(Type,Visual)
 
             local function OnNewCharacter(Player)
                 table.insert(Connections, Player.CharacterAdded:Connect(function(Character)
-                    Callback(Character, Manager.Settings[Type][Visual])
+                    Callback(Character, Manager.Settings[Type][Visual], nil, Visuals)
                 end))
 
                 if Player.Character and Player.Character.PrimaryPart then
-                    Callback(Player.Character, Manager.Settings[Type][Visual])
+                    Callback(Player.Character, Manager.Settings[Type][Visual], nil, Visuals)
                 end
             end
 
@@ -33,12 +32,12 @@ Manager = {
         end
     },
     CreateVisuals = {
-        ["Name"] = function(Object, Settings, Text)
+        ["Name"] = function(Object, Settings, Text, Visuals)
             if not Text then
                 Text = Object.Name
             end
 
-            ESP:Name(Object, Text, Settings)
+            table.insert(Visuals, ESP:Name(Object, Text, Settings))
         end
     }
 }
@@ -72,7 +71,7 @@ function Manager:vtoggle(Type, Name, State, ObjectData)
         if self.Objects[ObjectData] then
             self.Objects[ObjectData](function(...)
                 self.CreateVisuals[Name](...)
-            end, Type, Name)
+            end, Type, Name, self.Visuals[Type][Name])
         end
     else
         for i,v in pairs(self.Visuals[Type][Name]) do
