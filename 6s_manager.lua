@@ -69,13 +69,21 @@ function Manager:vtoggle(Type, Name, State, ObjectData)
 
     if State then
         if self.Objects[ObjectData] then
-            self.Objects[ObjectData](function(...)
+            local Connections = self.Objects[ObjectData](function(...)
                 self.CreateVisuals[Name](...)
             end, Type, Name, self.Visuals[Type][Name])
+
+            self.Visuals[Type][Name].Connections = Connections
         end
     else
         for i,v in pairs(self.Visuals[Type][Name]) do
-            v:Remove()
+            if i == "Connections" then
+                for i2,v2 in pairs(v) do
+                    v2:Disconnect()
+                end
+            else
+                v:Remove()
+            end
         end
         
         self.Visuals[Type][Name] = nil
