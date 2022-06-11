@@ -38,6 +38,9 @@ Manager = {
             end
 
             table.insert(Visuals, ESP:Name(Object, Text, Settings))
+        end,
+        ["Box"] = function(Object, Settings, Visuals)
+            table.insert(Visuals, ESP:Box(Object, Settings))
         end
     }
 }
