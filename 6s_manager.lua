@@ -14,11 +14,19 @@ Manager = {
 
             local function OnNewCharacter(Player)
                 table.insert(Connections, Player.CharacterAdded:Connect(function(Character)
-                    Callback(Character, Manager.Settings[Type][Visual], nil, Visuals)
+                    Callback({
+                        Object = Character, 
+                        Settings = Manager.Settings[Type][Visual],
+                        Visuals = Visuals
+                    })
                 end))
 
                 if Player.Character and Player.Character.PrimaryPart then
-                    Callback(Player.Character, Manager.Settings[Type][Visual], nil, Visuals)
+                    Callback({
+                        Object = Player.Character, 
+                        Settings = Manager.Settings[Type][Visual],
+                        Visuals = Visuals
+                    })
                 end
             end
 
@@ -32,15 +40,15 @@ Manager = {
         end
     },
     CreateVisuals = {
-        ["Name"] = function(Object, Settings, Text, Visuals)
-            if not Text then
-                Text = Object.Name
+        ["Name"] = function(Args)
+            if not Args.Text then
+                Args.Text = Args.Object.Name
             end
 
-            table.insert(Visuals, ESP:Name(Object, Text, Settings))
+            table.insert(Args.Visuals, ESP:Name(Args.Object, Args.Text, Args.Settings))
         end,
-        ["Box"] = function(Object, Settings, Visuals)
-            table.insert(Visuals, ESP:Box(Object, Settings))
+        ["Box"] = function(Args)
+            table.insert(Args.Visuals, ESP:Box(Args.Object, Args.Settings))
         end
     }
 }
