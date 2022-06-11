@@ -49,6 +49,15 @@ Manager = {
         end,
         ["Box"] = function(Args)
             table.insert(Args.Visuals, ESP:Box(Args.Object, Args.Settings))
+        end,
+        ["Skeleton"] = function(Args)
+            table.insert(Args.Visuals, ESP:Skeleton(Args.Object, Args.Settings))
+        end,
+        ["Chams"] = function(Args)
+            table.insert(Args.Visuals, ESP:Chams(Args.Object, Args.Settings))
+        end,
+        ["HealthBar"] = function(Args)
+            table.insert(Args.Visuals, ESP:HealthBar(Args.Object, Args.Settings))
         end
     }
 }
