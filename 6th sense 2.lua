@@ -266,6 +266,10 @@ function ESP:Skeleton(Object, Settings)
 
     function SkeletonESP:ChangeSetting(Setting, Value)
         Settings[Setting] = Value
+
+        for i,v in pairs(DrawingObjects) do
+            v[Setting] = Value
+        end
     end
 
     function SkeletonESP:Hide()
