@@ -88,6 +88,10 @@ function ESP:Box(Object, Settings)
 
     function BoxESP:ChangeSetting(Setting, Value)
         Settings[Setting] = Value
+
+        if BoxESP.DrawingObject[Setting] then
+            BoxESP.DrawingObject[Setting] = Value
+        end
     end
 
     function BoxESP:Hide()
@@ -391,8 +395,11 @@ function ESP:Name(Object, Text, Settings)
     end
 
     function NameESP:ChangeSetting(Setting, Value)
-        print("changing setting", Setting, Value)
         Settings[Setting] = Value
+
+        if NameESP.DrawingObject[Setting] then
+            NameESP.DrawingObject[Setting] = Value
+        end
     end
 
     function NameESP:Hide()
