@@ -151,6 +151,10 @@ function Manager:UpdateSetting(Type, Visual, Setting, Value)
     end
 
     self.Settings[Type][Visual][Setting] = Value
+
+    for i,v in pairs(self.Visuals[Type][Visual]) do
+        v:ChangeSetting(Setting, Value)
+    end
 end
 
 return Manager
