@@ -37,7 +37,38 @@ Manager = {
             table.insert(Connections, Players.PlayerAdded:Connect(OnNewCharacter))
 
             return Connections
-        end
+        end,
+        ["AI"] = function(Callback, Type, Visual, Visuals)
+            local Connections = {}
+
+            local function OnNewCharacter(Character)
+                if Character then
+                    Callback({
+                        Object = Character, 
+                        Settings = Manager.Settings[Type][Visual],
+                        Visuals = Visuals
+                    })
+                end
+            end
+
+            for _,v in next, game.Workspace.AiZones:GetDescendants() do
+                if v:IsA("Humanoid") then
+                    OnNewCharacter(v.Parent)
+                end
+            end
+
+            table.insert(Connections, game.Workspace.AiZones.DescendantAdded:Connect(function(Part)
+                if Part and Part:IsA("Humanoid") then
+                    Callback({
+                        Object = Part.Parent, 
+                        Settings = Manager.Settings[Type][Visual],
+                        Visuals = Visuals
+                    })
+                end
+            end))
+
+            return Connections
+        end,
     },
     CreateVisuals = {
         ["Name"] = function(Args)
