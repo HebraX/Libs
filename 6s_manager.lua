@@ -13,9 +13,7 @@ Manager = {
             local Connections = {}
 
             local function OnNewCharacter(Player)
-                print("New player", Player.Name)
                 table.insert(Connections, Player.CharacterAdded:Connect(function(Character)
-                    print("New Character", Player.Name)
                     repeat
                         task.wait()
                     until Character.PrimaryPart and Character:FindFirstChild("Head") and Character:FindFirstChild("Humanoid")
@@ -66,6 +64,9 @@ Manager = {
 
             table.insert(Connections, game.Workspace.AiZones.DescendantAdded:Connect(function(Part)
                 if Part and Part:IsA("Humanoid") then
+                    repeat
+                        task.wait()
+                    until Part.Parent.PrimaryPart and Part.Parent:FindFirstChild("Head")
                     OnNewCharacter(Part.Parent)
                 end
             end))
