@@ -13,7 +13,9 @@ Manager = {
             local Connections = {}
 
             local function OnNewCharacter(Player)
+                print("New player", Player.Name)
                 table.insert(Connections, Player.CharacterAdded:Connect(function(Character)
+                    print("New Character", Player.Name)
                     Callback({
                         Object = Character, 
                         Settings = Manager.Settings[Type][Visual],
@@ -40,9 +42,11 @@ Manager = {
         end,
         ["AI"] = function(Callback, Type, Visual, Visuals)
             local Connections = {}
+            local CharactersAlreadyCovered = {}
 
             local function OnNewCharacter(Character)
-                if Character then
+                if Character and not CharactersAlreadyCovered[Character] then
+                    CharactersAlreadyCovered[Character] = true
                     Callback({
                         Object = Character, 
                         Settings = Manager.Settings[Type][Visual],
@@ -59,11 +63,7 @@ Manager = {
 
             table.insert(Connections, game.Workspace.AiZones.DescendantAdded:Connect(function(Part)
                 if Part and Part:IsA("Humanoid") then
-                    Callback({
-                        Object = Part.Parent, 
-                        Settings = Manager.Settings[Type][Visual],
-                        Visuals = Visuals
-                    })
+                    OnNewCharacter(Part.Parent)
                 end
             end))
 
@@ -152,9 +152,11 @@ function Manager:UpdateSetting(Type, Visual, Setting, Value)
 
     self.Settings[Type][Visual][Setting] = Value
 
-    for i,v in pairs(self.Visuals[Type][Visual]) do
-        if v and v.ChangeSetting then
-            v:ChangeSetting(Setting, Value)
+    if self.Visuals[Type] and self.Visuals[Type][Visual] then
+        for i,v in pairs(self.Visuals[Type][Visual]) do
+            if v and v.ChangeSetting then
+                v:ChangeSetting(Setting, Value)
+            end
         end
     end
 end
