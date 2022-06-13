@@ -16,6 +16,9 @@ Manager = {
                 print("New player", Player.Name)
                 table.insert(Connections, Player.CharacterAdded:Connect(function(Character)
                     print("New Character", Player.Name)
+                    repeat
+                        task.wait()
+                    until Character.PrimaryPart
                     Callback({
                         Object = Character, 
                         Settings = Manager.Settings[Type][Visual],
