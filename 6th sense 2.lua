@@ -228,7 +228,7 @@ function ESP:Skeleton(Object, Settings)
                 SkeletonESP.DrawingObjects.RootToLeftUpperArm.To = ToVector2(CharacterData["Left Arm"].TopVector)
                 SkeletonESP.DrawingObjects.LeftUpperToDownArm.From = ToVector2(CharacterData["Left Arm"].TopVector)
                 SkeletonESP.DrawingObjects.LeftUpperToDownArm.To = ToVector2(CharacterData["Left Arm"].BottomVector)
-            elseif Object:FindFirstChild("UpperTorso") and CharacterData and CharacterData["UpperTorso"] and CharacterData["Left Leg"] and CharacterData["Right Leg"] and CharacterData["Left Arm"] and CharacterData["Right Arm"] then
+            elseif Object:FindFirstChild("UpperTorso") and CharacterData and CharacterData["UpperTorso"] then
                 SkeletonESP.DrawingObjects.LowerTorsoUpperTorso.From = ToVector2(CharacterData["LowerTorso"].Vector)
                 SkeletonESP.DrawingObjects.LowerTorsoUpperTorso.To = ToVector2(CharacterData["UpperTorso"].Vector)
 
