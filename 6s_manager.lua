@@ -34,7 +34,9 @@ Manager = {
             end
 
             for _,v in next, Players:GetChildren() do
-                OnNewCharacter(v)
+                if v ~= Players.LocalPlayer then
+                    OnNewCharacter(v)
+                end
             end
 
             table.insert(Connections, Players.PlayerAdded:Connect(OnNewCharacter))
