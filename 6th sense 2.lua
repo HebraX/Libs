@@ -550,6 +550,8 @@ function ESP:Chams(Object, Settings)
 
     function ChamsESP:ChangeSetting(Setting, Value)
         Settings[Setting] = Value
+
+        ChamsESP.Object[Setting] = Settings[Setting]
     end
 
     function ChamsESP:Update()
