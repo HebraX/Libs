@@ -153,7 +153,9 @@ function Manager:UpdateSetting(Type, Visual, Setting, Value)
     self.Settings[Type][Visual][Setting] = Value
 
     for i,v in pairs(self.Visuals[Type][Visual]) do
-        v:ChangeSetting(Setting, Value)
+        if v and v.ChangeSetting then
+            v:ChangeSetting(Setting, Value)
+        end
     end
 end
 
