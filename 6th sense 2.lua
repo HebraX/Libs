@@ -29,6 +29,7 @@ function ESP:Box(Object, Settings)
  
     local BoxESP = {}
  
+    BoxESP.Type = "Box"
     BoxESP.DrawingObject = Drawing.new("Square")
     BoxESP.DrawingObject.Color = Settings.Color or Color3.fromRGB(255, 255, 255)
     BoxESP.DrawingObject.Thickness = Settings.Thickness or 2
@@ -121,6 +122,8 @@ function ESP:Skeleton(Object, Settings)
     ESP:CheckObject(Object)
  
     local SkeletonESP = {}
+    SkeletonESP.Type = "Skeleton"
+
     local DrawingObjects = {}
     DrawingObjects.Neck = Drawing.new("Line")
     DrawingObjects.LowerTorsoUpperTorso = Drawing.new("Line")
@@ -301,6 +304,7 @@ function ESP:Name(Object, Text, Settings)
     ESP:CheckObject(Object)
  
     local NameESP = {}
+    NameESP.Type = "Skeleton"
  
     NameESP.DrawingObject = Drawing.new("Text")
     NameESP.DrawingObject.Font = 3
@@ -424,6 +428,7 @@ function ESP:HealthBar(Object, Settings)
     ESP:CheckObject(Object)
  
     local HealthBarESP = {}
+    HealthBarESP.Type = "HealthBar"
 
     HealthBarESP.DrawingObjectBackground = Drawing.new("Line")
     HealthBarESP.DrawingObject = Drawing.new("Line")
@@ -532,6 +537,7 @@ function ESP:Chams(Object, Settings)
     ESP:CheckObject(Object)
 
     local ChamsESP = {}
+    ChamsESP.Type = "HealthBar"
 
     ChamsESP.Object = Instance.new("Highlight")
     ChamsESP.Object.DepthMode = Settings.DepthMode
