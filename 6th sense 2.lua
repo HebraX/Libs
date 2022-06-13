@@ -21,6 +21,7 @@ function ESP:Box(Object, Settings)
     Settings.Filled = Settings.Filled or false
     Settings.VisCheck = false
     Settings.HideVisCheck = false
+    Settings.Offset = Settings.Offset or 1
 
     if Object and not Object.PrimaryPart then
         return nil
@@ -78,7 +79,7 @@ function ESP:Box(Object, Settings)
         
         if IsVisible then
             BoxESP.DrawingObject.Size = Vector2.new(workspace.CurrentCamera.ViewportSize.X / (RootCFrame.Position - workspace.CurrentCamera.CFrame.Position).Magnitude, HeadVector.Y - LegVector.Y)
-            BoxESP.DrawingObject.Position = Vector2.new(RootVector.X - BoxESP.DrawingObject.Size.X / 2, (RootVector.Y - (BoxESP.DrawingObject.Size.Y)))
+            BoxESP.DrawingObject.Position = Vector2.new(RootVector.X - BoxESP.DrawingObject.Size.X / 2, (RootVector.Y - (BoxESP.DrawingObject.Size.Y / Settings.Offset)))
 
             BoxESP.DrawingObject.Visible = true
         else
@@ -432,6 +433,8 @@ function ESP:HealthBar(Object, Settings)
     Settings.KeepMiddle = Settings.KeepMiddle or nil
     Settings.VisCheck = false
     Settings.HideVisCheck = false
+    Settings.Offset1 = Settings.Offset1 or 4
+    Settings.Offset2 = Settings.Offset2 or 2
 
     if Object and not Object.PrimaryPart then
         return nil
@@ -491,14 +494,14 @@ function ESP:HealthBar(Object, Settings)
         if IsVisible then
             local DistanceY = math.clamp((Vector2.new(HeadVector.X, HeadVector.Y) - Vector2.new(RootVector.X, RootVector.Y)).Magnitude, 2, math.huge)
 
-            local d = (Vector2.new(RootVector.X - DistanceY, RootVector.Y - DistanceY*2) - Vector2.new(RootVector.X - DistanceY, RootVector.Y + DistanceY*2)).Magnitude 
+            local d = (Vector2.new(RootVector.X - DistanceY, RootVector.Y - DistanceY*Settings.Offset2) - Vector2.new(RootVector.X - DistanceY, RootVector.Y + DistanceY*Settings.Offset2)).Magnitude 
             local healthoffset = Object.Humanoid.Health/Object.Humanoid.MaxHealth * d
 
-            HealthBarESP.DrawingObject.From = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*4)
-            HealthBarESP.DrawingObject.To = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*4 - healthoffset)
+            HealthBarESP.DrawingObject.From = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*Settings.Offset1)
+            HealthBarESP.DrawingObject.To = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*Settings.Offset1 - healthoffset)
 
-            HealthBarESP.DrawingObjectBackground.From = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*4)
-            HealthBarESP.DrawingObjectBackground.To = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*4)
+            HealthBarESP.DrawingObjectBackground.From = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*Settings.Offset1)
+            HealthBarESP.DrawingObjectBackground.To = Vector2.new(RootVector.X - DistanceY - 5, RootVector.Y + DistanceY*Settings.Offset1)
 
             local Green = Color3.fromRGB(0, 255, 0)
             local Red = Color3.fromRGB(255, 0, 0)
