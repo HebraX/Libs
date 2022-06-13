@@ -18,7 +18,7 @@ Manager = {
                     print("New Character", Player.Name)
                     repeat
                         task.wait()
-                    until Character.PrimaryPart
+                    until Character.PrimaryPart and Character:FindFirstChild("Head") and Character:FindFirstChild("Humanoid")
                     Callback({
                         Object = Character, 
                         Settings = Manager.Settings[Type][Visual],
