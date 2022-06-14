@@ -144,7 +144,7 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 	local u13 = 0;
 	local l__LookVector__14 = v22.CFrame.LookVector;
     if Settings.CurrentTargetPart then
-        l__LookVector__14 = CFrame.new(v22.CFrame.Position, Settings.CurrentTargetPart.Position)
+        l__LookVector__14 = CFrame.new(v22.CFrame.Position, Settings.CurrentTargetPart.Position).LookVector
     end
 	local l__p__15 = l__HumanoidRootPart__21.CFrame.p;
 	local u16 = "";
