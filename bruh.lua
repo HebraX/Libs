@@ -79,7 +79,7 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 		local v38 = #v25.RecoilPattern:GetChildren();
 		v37 = v25.RecoilPattern:FindFirstChild(tostring(p15));
 	end;
-	local v39 = p9.ItemProperties.Tool:GetAttribute("MuzzleDevice") and "Default";
+	local v39 = p9.ItemProperties.Tool:GetAttribute("MuzzleDevice") and "Default" or "Default";
 	local v40 = v26:GetAttribute("RecoilStrength");
 	local v41 = v40;
 	local v42 = v40;
