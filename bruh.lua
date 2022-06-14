@@ -212,10 +212,24 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 				end;
                 if Settings.FastBullet then
                     if Settings.CurrentTargetPart then
-                        v65 = Settings.CurrentTargetPart
-                        v68 = Settings.CurrentTargetPart.Position
-                        v66 = Settings.CurrentTargetPart.CFrame.LookVector
-                        v67 = Settings.CurrentTargetPart.Material
+						local RaycastParamsForTestRaycast = RaycastParams.new()
+						RaycastParamsForTestRaycast.FilterType = Enum.RaycastFilterType.Whitelist
+						RaycastParamsForTestRaycast.IgnoreWater = true
+						RaycastParamsForTestRaycast.FilterDescendantsInstances = {Settings.CurrentTargetPart.Parent}
+
+						local TestRaycast = workspace:Raycast(l__CurrentCamera__17.CFrame.Position, (Settings.CurrentTargetPart.Position - l__CurrentCamera__17.CFrame.Position).Unit * 99999, v57);
+						if TestRaycast then
+							print("Raycast success!!!")
+							v65 = TestRaycast.Instance;
+							v68 = TestRaycast.Position;
+							v66 = TestRaycast.Normal;
+							v67 = TestRaycast.Material;
+						else
+							v65 = Settings.CurrentTargetPart
+							v68 = Settings.CurrentTargetPart.Position
+							v66 = Settings.CurrentTargetPart.CFrame.LookVector
+							v67 = Settings.CurrentTargetPart.Material
+						end
                     else
                         v30 = 5000
                     end
