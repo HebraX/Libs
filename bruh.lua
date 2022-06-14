@@ -264,6 +264,7 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
                         local HitmarkerSound = Instance.new("Sound")
                         HitmarkerSound.Parent = game.SoundService
                         HitmarkerSound.SoundId = "rbxassetid://4753603610"
+                        HitmarkerSound.Volume = 8
                         HitmarkerSound:Play()
                         l__Debris__5:AddItem(HitmarkerSound, 5)
 						return;
