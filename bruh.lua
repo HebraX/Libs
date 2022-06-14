@@ -260,13 +260,13 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 					elseif v71:FindFirstChild("Humanoid") then
 						l__ProjectileInfIict__10:FireServer(v71, v65, u16, u24, v68, u11(l__HumanoidRootPart__21, v68, v61), v65.Position.X - v68.X, v65.Position.Z - v68.Z);
 						u9.Impact(v65, v68, v66, v67, u22, "Ranged", true);
-						u26();
                         local HitmarkerSound = Instance.new("Sound")
                         HitmarkerSound.Parent = game.SoundService
                         HitmarkerSound.SoundId = "rbxassetid://4753603610"
                         HitmarkerSound.Volume = 8
                         HitmarkerSound:Play()
                         l__Debris__5:AddItem(HitmarkerSound, 5)
+						u26();
 						return;
 					else
 						if v71.ClassName == "Model" and v71.PrimaryPart ~= nil and v71.PrimaryPart:GetAttribute("Health") then
