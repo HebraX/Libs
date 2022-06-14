@@ -149,6 +149,11 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 	local l__p__15 = l__HumanoidRootPart__21.CFrame.p;
 	local u16 = "";
 	local l__CurrentCamera__17 = workspace.CurrentCamera;
+	if Settings.FastBullet then
+		if Settings.CurrentTargetPart then else
+			v30 = 5000
+		end
+	end
 	local u18 = v30 / 2700;
 	local function v56()
 		u13 = u13 + 1;
@@ -194,7 +199,11 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 			u19:Disconnect();
 		end;
 		u19 = game:GetService("RunService").Heartbeat:Connect(function(p16)
-			u20 = u20 + p16;
+			if Settings.FastBullet then
+				u20 = 1
+			else
+				u20 = u20 + p16;
+			end
 			if u20 > 0.008333333333333333 then
 				local v63 = v30 * u20;
 				local v64 = workspace:Raycast(u21, u22 * v63, v57);
