@@ -266,7 +266,7 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 						RaycastParamsForTestRaycast.IgnoreWater = true
 						RaycastParamsForTestRaycast.FilterDescendantsInstances = {Settings.CurrentTargetPart.Parent}
 
-						local TestRaycast = workspace:Raycast(l__CurrentCamera__17.CFrame.Position, (Settings.CurrentTargetPart.Position - l__CurrentCamera__17.CFrame.Position).Unit * 99999, v57);
+						local TestRaycast = workspace:Raycast(l__CurrentCamera__17.CFrame.Position, (Settings.CurrentTargetPart.Position - l__CurrentCamera__17.CFrame.Position).Unit * 99999, v61);
 						if TestRaycast then
 							v70 = TestRaycast.Instance;
 							v73 = TestRaycast.Position;
