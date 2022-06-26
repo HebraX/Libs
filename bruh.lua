@@ -322,6 +322,12 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 					elseif v76:FindFirstChild("Humanoid") then
 						l__ProjectileInflict__10:FireServer(v76, v70, u16, u24, v73, u11(l__HumanoidRootPart__21, v73, v66), v70.Position.X - v73.X, v70.Position.Z - v73.Z, u27);
 						u9.Impact(v70, v73, v71, v72, u22, "Ranged", true);
+                        local HitmarkerSound = Instance.new("Sound")
+                        HitmarkerSound.Parent = game.SoundService
+                        HitmarkerSound.SoundId = "rbxassetid://4753603610"
+                        HitmarkerSound.Volume = 8
+                        HitmarkerSound:Play()
+                        l__Debris__5:AddItem(HitmarkerSound, 5)
 						u26();
 						return;
 					else
