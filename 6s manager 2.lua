@@ -159,7 +159,9 @@ Players.PlayerAdded:Connect(function(Player)
     SetupPlayer(Player)
 end)
 for _,v in pairs(Players:GetPlayers()) do
-    SetupPlayer(v)
+    if v ~= Players.LocalPlayer then
+        SetupPlayer(v)
+    end
 end
 -- AI
 function SetupAI(Character)
