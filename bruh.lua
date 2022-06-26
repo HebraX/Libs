@@ -379,6 +379,19 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
 		    u9.RecoilCamera(l__LocalPlayer__7, l__CurrentCamera__17, p12, v43, v44, v33, v40);
         end
 	end;
+    if not v40 then
+        print("v40 nil")
+        v40 = {
+			x = {
+				Value = 0
+			}, 
+			y = {
+				Value = 0
+			}
+		};
+    else
+        print("v40 is nice")
+    end
 	return v43 / 200, v44 / 200, v41, v40;
 end;
 return v1;
