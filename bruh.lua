@@ -380,7 +380,6 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, Settings)
         end
 	end;
     if not v40 then
-        print("v40 nil")
         v40 = {
 			x = {
 				Value = 0
