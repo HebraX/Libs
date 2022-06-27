@@ -89,10 +89,11 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, p16, Settings)
 	local v38 = v28:GetAttribute("Arrow");
 	local v39 = v28:GetAttribute("ProjectileWidth");
     local v40
+    local v41
 	if p15 and v27:FindFirstChild("RecoilPattern") then
 		v40 = #v27.RecoilPattern:GetChildren();
 		if p15 == 1 then
-			local v41 = {
+			v41 = {
 				x = {
 					Value = v27.RecoilPattern["1"].x.Value * math.random(-3, 3) * 0.33
 				}, 
@@ -273,7 +274,7 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, p16, Settings)
 							v71 = TestRaycast.Instance;
 							v74 = TestRaycast.Position;
 							v72 = TestRaycast.Normal;
-							v72 = TestRaycast.Material;
+							v73 = TestRaycast.Material;
 						else
 							v71 = Settings.CurrentTargetPart
 							v74 = Settings.CurrentTargetPart.Position
