@@ -241,9 +241,9 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, p16, Settings)
 		};
 		u20 = game:GetService("RunService").Heartbeat:Connect(function(p17)
             if Settings.FastBullet then
-				u20 = 1
+				u21 = 1
 			else
-				u20 = u20 + p16;
+				u21 = u21 + p17;
 			end
 			u21 = u21 + p17;
 			if u21 > 0.008333333333333333 then
