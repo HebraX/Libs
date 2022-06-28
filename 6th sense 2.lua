@@ -450,7 +450,7 @@ function ESP:HealthBar(Object, Settings)
     HealthBarESP.DrawingObject.Color = Settings.Color or Color3.fromRGB(170, 0, 0)
     HealthBarESP.DrawingObject.ZIndex = 2
     HealthBarESP.DrawingObjectBackground.Color = Color3.fromRGB(34, 34, 34)
-    HealthBarESP.DrawingObjectBackground.Thickness = Settings.Thickness + 4 -- + 1 or 5
+    HealthBarESP.DrawingObjectBackground.Thickness = Settings.Thickness + 8 -- + 1 or 5
     HealthBarESP.DrawingObjectBackground.ZIndex = 1
     HealthBarESP.Object = Object
     HealthBarESP.Part = HealthBarESP.Object.PrimaryPart.Name
