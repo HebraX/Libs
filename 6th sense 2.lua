@@ -427,7 +427,7 @@ end
 function ESP:HealthBar(Object, Settings)
     Settings = Settings or {}
 
-    Settings.Thickness = Settings.Thickness or 4
+    Settings.Thickness = Settings.Thickness or 2
     Settings.Color = Settings.Color or Color3.fromRGB(0, 170, 0)
     Settings.Location = Settings.Location or "Left"
     Settings.KeepMiddle = Settings.KeepMiddle or nil
@@ -446,11 +446,11 @@ function ESP:HealthBar(Object, Settings)
 
     HealthBarESP.DrawingObjectBackground = Drawing.new("Line")
     HealthBarESP.DrawingObject = Drawing.new("Line")
-    HealthBarESP.DrawingObject.Thickness = Settings.Thickness or 4
+    HealthBarESP.DrawingObject.Thickness = Settings.Thickness or 2
     HealthBarESP.DrawingObject.Color = Settings.Color or Color3.fromRGB(170, 0, 0)
     HealthBarESP.DrawingObject.ZIndex = 2
     HealthBarESP.DrawingObjectBackground.Color = Color3.fromRGB(34, 34, 34)
-    HealthBarESP.DrawingObjectBackground.Thickness = Settings.Thickness + 2 -- + 1 or 5
+    HealthBarESP.DrawingObjectBackground.Thickness = Settings.Thickness + 4 -- + 1 or 5
     HealthBarESP.DrawingObjectBackground.ZIndex = 1
     HealthBarESP.Object = Object
     HealthBarESP.Part = HealthBarESP.Object.PrimaryPart.Name
