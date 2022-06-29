@@ -11,7 +11,9 @@ Manager = {
     CurrentObjects = {},
     Objects = {
         ["Players"] = {},
-        ["AI"] = {}
+        ["AI"] = {},
+        ["DroppedItems"] = {},
+        ["DeadPlayers"] = {}
     },
     CreateVisuals = {
         ["Name"] = function(Args)
@@ -168,7 +170,7 @@ function SetupAI(Character)
     coroutine.wrap(function()
         repeat
             task.wait()
-        until Character:FindFirstChild("Humanoid") and Character.PrimaryPart and Character:FindFirstChild("Head")
+        until Character:FindFirstChild("Humanoid") and Character.PrimaryPart and Character:FindFirstChild("Head") and Character:FindFirstChild("Humanoid")
 
         table.insert(Manager.Objects["AI"], Character)
 
@@ -195,5 +197,37 @@ for _,v in next, game.Workspace.AiZones:GetDescendants() do
         SetupAI(v.Parent)
     end
 end
+-- Dropped Items
+function SetupDroppedItem(Item)
+    coroutine.wrap(function()
+        repeat
+            task.wait()
+        until Item.PrimaryPart ~= nil
+
+        table.insert(Manager.Objects["DroppedItems"], Item)
+
+        if Manager.Settings["DroppedItems"] then
+            for i,v in pairs(Manager.Settings["DroppedItems"]) do
+                if v.Enabled then
+                    Manager.CreateVisuals[i]({
+                        Object = Item,
+                        Visuals = Manager.Visuals["DroppedItems"][i],
+                        Settings = Manager.Settings["DroppedItems"][i]
+                    })
+                end
+            end
+        end
+    end)()
+end
+for _,v in next, workspace.DroppedItems:GetChildren() do
+    SetupDroppedItem(v)
+end
+workspace.DroppedItems.ChildAdded:Connect(function(Child)
+    repeat
+        task.wait()
+    until Child.PrimaryPart
+
+    SetupDroppedItem(Child)
+end)
 
 return Manager
