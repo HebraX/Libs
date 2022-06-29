@@ -210,9 +210,13 @@ function v1.CreateBullet(p8, p9, p10, p11, p12, p13, p14, p15, p16, Settings)
 		end;
 		if u14 == 1 then
 			u17 = v67.Y .. "posY" .. game.Players.LocalPlayer.UserId .. "Id" .. tick();
-			l__FireProjectile__9:FireServer(v65, u17, false, {});
+			l__FireProjectile__9:FireServer(v65, u17, false, {}, {
+				A1 = p9.Name,
+			});
 		elseif u14 > 1 then
-			l__FireProjectile__9:FireServer(v65, u17, true, {});
+			l__FireProjectile__9:FireServer(v65, u17, true, {}, {
+				A1 = p9.Name,
+			});
 		end;
 		local v68 = nil;
 		if v33 then
